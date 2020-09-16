@@ -7,8 +7,7 @@ sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
 
 # install more packages
 apt-get -y update \
-    && apt-get -y install --no-install-recommends jq curl unzip locales \
-    && apt-get -y install --no-install-recommends openjdk-11-jre-headless python3
+    && apt-get -y install jq curl unzip locales openjdk-11-jre-headless python3
 
 # remove non-UTF-8 locales, enable some locales (enabling all make building very slow), set to en_GB for default
 sed -i -e "/UTF-8/!d" /etc/locale.gen \
@@ -18,7 +17,7 @@ sed -i -e "/UTF-8/!d" /etc/locale.gen \
     && update-locale LANG='en_GB.UTF-8'
 
 # install sabnzbdplus
-apt-get -y install --no-install-recommends sabnzbdplus \
+apt-get -y install sabnzbdplus \
     && rm -rf /etc/init.d/sabnzbdplus \
     && rm -rf /etc/default/sabnzbdplus
 
