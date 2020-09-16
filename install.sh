@@ -9,7 +9,8 @@ apt-get -y update \
 
 # enable all UTF-8 locales and remove the rest
 sed -i -e "/UTF-8/!d" locale.gen \\
-    && sed -i -e "s/# //g" locale.gen
+    && sed -i -e "s/# //g" locale.gen \\
+    && dpkg-reconfigure --frontend=noninteractive locales
 
 # remove sabnzbdplus config
 rm -rf /etc/init.d/sabnzbdplus \
