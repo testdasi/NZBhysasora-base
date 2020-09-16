@@ -17,9 +17,10 @@ sed -i -e "/UTF-8/!d" /etc/locale.gen \
     && update-locale LANG='en_GB.UTF-8'
 
 # install sabnzbdplus
-apt-get -y install sabnzbdplus \
-    && rm -rf /etc/init.d/sabnzbdplus \
-    && rm -rf /etc/default/sabnzbdplus
+apt-get -y install sabnzbdplus
+
+# install deluge
+apt-get -y install deluged deluge-web
 
 # install nzbhydra2
 NZBHYDRA2_RELEASE=$(curl -sX GET "https://api.github.com/repos/theotherp/nzbhydra2/releases/latest" | jq -r .tag_name)
