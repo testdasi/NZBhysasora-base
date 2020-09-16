@@ -28,6 +28,7 @@ NZBHYDRA2_VER=${NZBHYDRA2_RELEASE#v} \
     && mkdir -p /app/nzbhydra2 \
     && unzip /tmp/nzbhydra2.zip -d /app/nzbhydra2 \
     && chmod +x /app/nzbhydra2/nzbhydra2wrapperPy3.py \
+    && chmod +x /app/nzbhydra2/nzbhydra2 \
     && rm -f /tmp/nzbhydra2.zip \
     && echo "$(date "+%d.%m.%Y %T") nzbhydra2 binary release ${NZBHYDRA2_RELEASE}" >> /build_date.info
 
