@@ -5,7 +5,7 @@ sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
 
 # install more packages
 apt-get -y update \
-    && apt-get -y install wget unzip locales sabnzbdplus
+    && apt-get -y install wget locales
 
 # remove non-UTF-8 locales and enable some locales (enabling all make building very slow)
 sed -i -e "/UTF-8/!d" /etc/locale.gen \
@@ -13,8 +13,27 @@ sed -i -e "/UTF-8/!d" /etc/locale.gen \
     && sed -i -e "s/# en_US/en_US/g" /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales
 
+# install openvpn
+apt-get install -y openvpn
+apt-get install -y nftables
+
+# install stubby and clean config
+apt-get -y install stubby \
+    && mkdir -p /etc/stubby \
+    && rm -rf /etc/stubby/*
+
+# install dante server
+apt-get -y install dante-server \
+    && rm -f /etc/danted.conf
+
+# install tinyproxy
+apt-get -y install tinyproxy \
+    && mkdir -p /etc/tinyproxy \
+    && rm -rf /etc/tinyproxy/*
+
 # remove sabnzbdplus config
-rm -rf /etc/init.d/sabnzbdplus \
+apt-get -y install unzip sabnzbdplus
+    && rm -rf /etc/init.d/sabnzbdplus \
     && rm -rf /etc/default/sabnzbdplus
 
 # clean up
