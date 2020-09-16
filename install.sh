@@ -5,7 +5,7 @@ sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
 
 # install more packages
 apt-get -y update \
-    && apt-get -y install wget sabnzbdplus
+    && apt-get -y install wget unzip sabnzbdplus
 
 # remove sabnzbdplus config
 rm -rf /etc/init.d/sabnzbdplus \
