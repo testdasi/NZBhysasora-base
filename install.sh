@@ -5,7 +5,7 @@ sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
 
 # install more packages
 apt-get -y update \
-    && apt-get -y install wget locales
+    && apt-get -y install dnsutils wget sipcalc locales
 
 # remove non-UTF-8 locales, enable some locales (enabling all make building very slow), set to en_GB for default
 sed -i -e "/UTF-8/!d" /etc/locale.gen \
