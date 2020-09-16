@@ -7,6 +7,10 @@ sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
 apt-get -y update \
     && apt-get -y install wget unzip locales sabnzbdplus
 
+# enable all UTF-8 locales and remove the rest
+sed -i -e "/UTF-8/!d" locale.gen \\
+    && sed -i -e "s/# //g" locale.gen
+
 # remove sabnzbdplus config
 rm -rf /etc/init.d/sabnzbdplus \
     && rm -rf /etc/default/sabnzbdplus
