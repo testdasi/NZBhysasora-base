@@ -7,9 +7,10 @@ sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
 apt-get -y update \
     && apt-get -y install wget unzip locales sabnzbdplus
 
-# enable all UTF-8 locales and remove the rest
+# remove non-UTF-8 locales and enable some locales (enabling all make building very slow)
 sed -i -e "/UTF-8/!d" /etc/locale.gen \
-    && sed -i -e "s/# //g" /etc/locale.gen \
+    && sed -i -e "s/# en_GB/en_GB/g" /etc/locale.gen \
+    && sed -i -e "s/# en_US/en_US/g" /etc/locale.gen \
     && dpkg-reconfigure --frontend=noninteractive locales
 
 # remove sabnzbdplus config
