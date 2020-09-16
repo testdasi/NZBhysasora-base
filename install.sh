@@ -15,9 +15,9 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BF
 curl -L "https://mediaarea.net/repo/deb/repo-mediaarea_1.0-13_all.deb" -o /tmp/key.deb \
     && dpkg -i /tmp/key.deb \
     && rm -f /tmp/key.deb \
-    && echo "deb https://mediaarea.net/repo/deb/debian stable-buster main" | tee /etc/apt/sources.list.d/mediaarea.list
-apt-get update \
-    && apt-get install -y bzip2 ca-certificates-mono libcurl4-openssl-dev mediainfo mono-devel mono-vbnc python sqlite3
+    && echo "deb https://mediaarea.net/repo/deb/debian buster main" | tee /etc/apt/sources.list.d/mediaarea.list
+apt-get -y update \
+    && apt-get -y install bzip2 ca-certificates-mono libcurl4-openssl-dev mediainfo mono-devel mono-vbnc python sqlite3
 
 # remove non-UTF-8 locales, enable some locales (enabling all make building very slow), set to en_GB for default
 sed -i -e "/UTF-8/!d" /etc/locale.gen \
