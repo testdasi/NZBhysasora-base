@@ -23,8 +23,8 @@ sed -i -e "/UTF-8/!d" /etc/locale.gen \
 # install sabnzbdplus
 apt-get -y install sabnzbdplus
 
-# install deluge
-apt-get -y install deluged deluge-web
+# install deluge - commented out, will be installed in main build
+# apt-get -y install deluged deluge-web
 
 # install nzbhydra2
 NZBHYDRA2_RELEASE=$(curl -sX GET "https://api.github.com/repos/theotherp/nzbhydra2/releases/latest" | jq -r .tag_name)
