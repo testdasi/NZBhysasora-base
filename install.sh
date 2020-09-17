@@ -2,12 +2,12 @@
 
 ### openvpn, nftables, stubby, tinyproxy, dante are in the base image ###
 
+# add contrib and non-free repos. sab is in contrib
+sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
+
 # install more packages
 apt-get -y update \
     && apt-get -y install jq curl unzip locales openjdk-11-jre-headless python3
-
-# add contrib and non-free repos. sab is in contrib
-sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
 
 # remove non-UTF-8 locales, enable some locales (enabling all make building very slow), set to en_GB for default
 sed -i -e "/UTF-8/!d" /etc/locale.gen \
