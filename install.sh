@@ -5,6 +5,9 @@
 # add contrib and non-free repos. sab is in contrib
 sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
 
+# create man1 folder otherwise openjdk-11-jre-headless would fail because of reasons
+mkdir -p /usr/share/man/man1
+
 # install more packages
 apt-get -y update \
     && apt-get -y install jq curl unzip locales openjdk-11-jre-headless python3
