@@ -4,8 +4,7 @@
 
 # add contrib and non-free repos. sab is in contrib
 sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
-apt-get -y update \
-    && apt-get -y install screen
+apt-get -y update
 # create man1 folder otherwise openjdk-11-jre-headless would fail because of reasons
 mkdir -p /usr/share/man/man1
 
