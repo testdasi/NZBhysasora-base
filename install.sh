@@ -40,6 +40,8 @@ cd /tmp \
     && mkdir -p /app \
     && unzip /tmp/launcher.zip \
     && mv /tmp/BrowserStartPage-master /app/launcher \
+    && chmod +x /app/launcher/launcher-python2.sh \
+    && chmod +x /app/launcher/launcher-python3.sh \
     && rm -f /tmp/launcher.zip
 
 # clean up
