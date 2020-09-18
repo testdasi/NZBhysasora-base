@@ -23,9 +23,6 @@ sed -i -e "/UTF-8/!d" /etc/locale.gen \
 # install sabnzbdplus
 apt-get -y install sabnzbdplus
 
-# install deluge - commented out, will be installed in main build
-# apt-get -y install deluged deluge-web
-
 # install nzbhydra2
 NZBHYDRA2_RELEASE=$(curl -sX GET "https://api.github.com/repos/theotherp/nzbhydra2/releases/latest" | jq -r .tag_name)
 NZBHYDRA2_VER=${NZBHYDRA2_RELEASE#v} \
@@ -36,6 +33,14 @@ NZBHYDRA2_VER=${NZBHYDRA2_RELEASE#v} \
     && chmod +x /app/nzbhydra2/nzbhydra2 \
     && rm -f /tmp/nzbhydra2.zip \
     && echo "$(date "+%d.%m.%Y %T") Added nzbhydra2 binary release ${NZBHYDRA2_RELEASE}" >> /build_date.info
+
+# install my BrowserStartPage fork
+cd /tmp \
+    && curl -L "https://github.com/testdasi/BrowserStartPage/archive/master.zip" -o /tmp/launcher.zip \
+    && mkdir -p /app \
+    && unzip /tmp/launcher.zip \
+    && mv /tmp/BrowserStartPage-master /app/launcher \
+    && rm -f /tmp/launcher.zip
 
 # clean up
 apt-get -y autoremove \
