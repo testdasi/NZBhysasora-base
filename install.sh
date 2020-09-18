@@ -4,14 +4,15 @@
 
 # add contrib and non-free repos. sab is in contrib
 sed -i "s| main| main contrib non-free|g" '/etc/apt/sources.list'
-apt-get -y update
+apt-get -y update \
+    && apt-get -y install screen
 # create man1 folder otherwise openjdk-11-jre-headless would fail because of reasons
 mkdir -p /usr/share/man/man1
 
 # install packages required for sabnzbdplus
-apt-get -y install unzip locales
+apt-get -y install locales
 # install packages required for nzbhydra2
-apt-get -y install jq curl openjdk-11-jre-headless python3
+apt-get -y install jq openjdk-11-jre-headless python3
 
 # remove non-UTF-8 locales, enable some locales (enabling all make building very slow), set to en_GB for default
 sed -i -e "/UTF-8/!d" /etc/locale.gen \
